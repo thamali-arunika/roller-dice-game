@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class GameRollerDice extends StatefulWidget {
@@ -13,7 +15,7 @@ class _GameRollerDiceState extends State<GameRollerDice> {
 
   void roll(){
     setState(() {
-      diceNumber=2;
+      diceNumber=Random().nextInt(6)+1;
     });
   }  
 
@@ -23,7 +25,7 @@ class _GameRollerDiceState extends State<GameRollerDice> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Image.asset(
-                'assets/images/01-$diceNumber.png',
+                'assets/images/dice-$diceNumber.png',
               width: 200,
               ),
               const SizedBox(
@@ -31,7 +33,7 @@ class _GameRollerDiceState extends State<GameRollerDice> {
               ),
               TextButton(onPressed: roll, 
               style: TextButton.styleFrom(
-                backgroundColor: Colors.brown,
+                backgroundColor: const Color.fromARGB(255, 85, 62, 53),
                 foregroundColor: Colors.white,
                 textStyle: const TextStyle(fontSize: 28)
               ),

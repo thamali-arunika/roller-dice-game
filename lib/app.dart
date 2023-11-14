@@ -8,14 +8,14 @@ Widget build(BuildContext context) {
   return MaterialApp(
     home: Scaffold(
       appBar: AppBar(
-         backgroundColor: Color.fromARGB(205,133,69, 41),
+         backgroundColor: Color.fromARGB(240, 169, 79, 41),
          title: const Text('Roller Dice Game'),
          centerTitle: true,
           ),
           body: const DicePage(colors:[
-          Color.fromARGB(255, 12, 33, 16),
-          Color.fromARGB(255, 12, 33, 16),
-          Color.fromARGB(255, 12, 33, 16)
+          Color.fromARGB(255, 5, 33, 10),
+          Color.fromARGB(255, 5, 33, 10),
+          Color.fromARGB(255, 5, 33, 10)
           ]),
       ),
   );
