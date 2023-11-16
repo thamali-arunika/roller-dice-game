@@ -16,7 +16,7 @@ final List<Color> colors;
           begin:beginAligment,
           end:endAligment,
           )),
-         child:const Center(child: RollerDice()),
+         child:const Center(child: GameDice()),
     );
 }
 }

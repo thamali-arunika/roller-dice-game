@@ -7,7 +7,7 @@ class RollerDiceApp extends StatelessWidget{
 Widget build(BuildContext context) {
   return const MaterialApp(
     home: Scaffold(
-          body: const DicePage(colors:[
+          body: DicePage(colors:[
           Color.fromARGB(255, 5, 33, 10),
           Color.fromARGB(255, 5, 33, 10),
           Color.fromARGB(255, 5, 33, 10)

@@ -2,14 +2,14 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-class RollerDice extends StatefulWidget {
-  const RollerDice({Key? key}) : super(key: key);
+class GameDice extends StatefulWidget {
+  const GameDice({Key? key}) : super(key: key);
 
   @override
-  State<RollerDice> createState() => _RollerDiceState();
+  State<GameDice> createState() => _GameDiceState();
 }
 
-class _RollerDiceState extends State<RollerDice>
+class _GameDiceState extends State<GameDice>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _rotationAnimation;
@@ -25,17 +25,17 @@ class _RollerDiceState extends State<RollerDice>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
     );
 
-    _rotationAnimation = Tween<double>(begin: 10, end: 60).animate(_controller);
+    _rotationAnimation = Tween<double>(begin: 7, end: 60).animate(_controller);
     _scaleAnimation = Tween<double>(begin: 1.0, end: 1.5).animate(_controller);
   }
 
-  int diceNum = 1;
+  int diceNumber = 1;
   void roll() {
     setState(() {
-      diceNum = Random().nextInt(6) + 1;
+      diceNumber = Random().nextInt(6) + 1;
     });
 
     // Reset the controller to its initial state
@@ -46,30 +46,30 @@ class _RollerDiceState extends State<RollerDice>
 
     // Update the score based on the current player
     if (currentPlayer == 1) {
-      player1Score += diceNum;
+      player1Score += diceNumber;
     } else {
-      player2Score += diceNum;
+      player2Score += diceNumber;
     }
 
     // Switch to the next player
     currentPlayer = (currentPlayer == 1) ? 2 : 1;
 
-    // Check for the winner after 5 rounds
-    if (currentRound == 5) {
+    // Check for the winner after 7 rounds
+    if (currentRound == 7) {
       int winner = (player1Score > player2Score) ? 1 : 2;
       showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Game Over'),
-            content: Text('Player $winner wins!'),
+            title: const Text('The Game is Over !'),
+            content: Text('Best Wishes... Player $winner won :)'),
             actions: [
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                   resetGame();
                 },
-                child: Text('Play Again'),
+                child: const Text('Play Again'),
               ),
             ],
           );
@@ -98,41 +98,50 @@ class _RollerDiceState extends State<RollerDice>
           child: ScaleTransition(
             scale: _scaleAnimation,
             child: Image.asset(
-              'assets/images/dice-$diceNum.png',
+              'assets/images/dice-$diceNumber.png',
               width: 180,
             ),
           ),
         ),
         const SizedBox(
-          height: 20,
+          height:6.0,
         ),
         Text(
           'Player $currentPlayer',
-          style: TextStyle(
-            fontSize: 24, 
+          style: const TextStyle(
+            fontSize: 25,
             fontWeight: FontWeight.bold,
-             color: Colors.white,
-            
+            color: Colors.white,
+            fontFamily: 'Orbitron',
+            letterSpacing: 2.0,
           ),
-          
         ),
         const SizedBox(
-          height: 10,
+          height: 6.0,
         ),
         Text(
           'Player 1 Score: $player1Score',
-          style: TextStyle(fontSize: 18, color: Colors.white,),
+          style: const TextStyle(
+            fontSize: 18,
+            color: Colors.white,
+          ),
         ),
         Text(
           'Player 2 Score: $player2Score',
-          style: TextStyle(fontSize: 18, color: Colors.white,),
+          style: const TextStyle(
+            fontSize: 18,
+            color: Colors.white,
+          ),
         ),
         Text(
-          'Round: $currentRound / 5',
-          style: TextStyle(fontSize: 18, color: Colors.white,),
+          'Round: $currentRound / 7',
+          style: const TextStyle(
+            fontSize: 18,
+            color: Colors.white,
+          ),
         ),
         const SizedBox(
-          height: 20,
+          height: 6.0,
         ),
         TextButton(
           onPressed: roll,
