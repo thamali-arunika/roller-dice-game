@@ -93,6 +93,22 @@ class _GameDiceState extends State<GameDice>
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
+        const Padding(
+          padding:
+              EdgeInsets.only(bottom: 90), //apply padding to all four sides
+          child: Text(
+            'Roller Dice Game',
+            style: TextStyle(
+              fontSize: 28,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontStyle: FontStyle.italic,
+              decoration: TextDecoration.underline,
+              letterSpacing: 2.0,
+            ),
+          ),
+        ),
+        
         RotationTransition(
           turns: _rotationAnimation,
           child: ScaleTransition(
@@ -104,7 +120,7 @@ class _GameDiceState extends State<GameDice>
           ),
         ),
         const SizedBox(
-          height:6.0,
+          height: 12.0,
         ),
         Text(
           'Player $currentPlayer',
@@ -117,7 +133,7 @@ class _GameDiceState extends State<GameDice>
           ),
         ),
         const SizedBox(
-          height: 6.0,
+          height: 29.0,
         ),
         Text(
           'Player 1 Score: $player1Score',
@@ -126,12 +142,18 @@ class _GameDiceState extends State<GameDice>
             color: Colors.white,
           ),
         ),
+        const SizedBox(
+          height: 9.0,
+        ),
         Text(
           'Player 2 Score: $player2Score',
           style: const TextStyle(
             fontSize: 18,
             color: Colors.white,
           ),
+        ),
+        const SizedBox(
+          height: 30.0,
         ),
         Text(
           'Round: $currentRound / 7',
@@ -141,7 +163,7 @@ class _GameDiceState extends State<GameDice>
           ),
         ),
         const SizedBox(
-          height: 6.0,
+          height: 50.0,
         ),
         TextButton(
           onPressed: roll,
