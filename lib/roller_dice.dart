@@ -171,9 +171,11 @@ class _GameDiceState extends State<GameDice>
             backgroundColor: Color.fromARGB(255, 162, 79, 2),
             foregroundColor: Colors.white,
             textStyle: const TextStyle(fontSize: 28),
+            
           ),
           child: const Text('Roll Dice'),
         ),
+
       ],
     );
   }
@@ -182,5 +184,6 @@ class _GameDiceState extends State<GameDice>
   void dispose() {
     _controller.dispose();
     super.dispose();
+    
   }
 }
