@@ -168,7 +168,7 @@ class _GameDiceState extends State<GameDice>
         TextButton(
           onPressed: roll,
           style: TextButton.styleFrom(
-            backgroundColor: Colors.blue,
+            backgroundColor: Color.fromARGB(255, 162, 79, 2),
             foregroundColor: Colors.white,
             textStyle: const TextStyle(fontSize: 28),
           ),
