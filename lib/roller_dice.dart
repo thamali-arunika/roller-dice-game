@@ -70,6 +70,7 @@ class _GameDiceState extends State<GameDice>
                   resetGame();
                 },
                 child: const Text('Play Again'),
+                
               ),
             ],
           );
@@ -95,32 +96,35 @@ class _GameDiceState extends State<GameDice>
       children: [
         const Padding(
           padding:
-              EdgeInsets.only(bottom: 90), //apply padding to all four sides
+              EdgeInsets.only(bottom:60), //apply padding to all four sides
           child: Text(
             'Roller Dice Game',
             style: TextStyle(
-              fontSize: 28,
+              fontSize: 32,
               color: Colors.white,
               fontWeight: FontWeight.bold,
-              fontStyle: FontStyle.italic,
+              fontStyle: FontStyle.normal,
               decoration: TextDecoration.underline,
               letterSpacing: 2.0,
             ),
           ),
         ),
-        
+    
         RotationTransition(
           turns: _rotationAnimation,
           child: ScaleTransition(
             scale: _scaleAnimation,
             child: Image.asset(
               'assets/images/dice-$diceNumber.png',
-              width: 180,
+              width: 190,
             ),
           ),
         ),
         const SizedBox(
-          height: 12.0,
+          height: 8.0,
+        ),
+         const Padding(
+          padding: EdgeInsets.only(bottom:50)
         ),
         Text(
           'Player $currentPlayer',
